@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose.connect("mongodb+srv://hsupare:2kZE1zdHBT5kzVVm@cluster0.5drhi.mongodb.net/himanshu-DB", {
-    useNewUrlParser: true
+    useNewUrlParser : true
 })
     .then(() => console.log("MongoDB Is Connected"))
     .catch(err => console.log(err))
