@@ -42,26 +42,27 @@ router.get('/movies', function (req, res) {
     res.send(" problem 1")
 })
 
-router.get('/movies/:indexNumber', function (req, res) {
-    let listmn = ['Rang de basanti', 'The shining', 'Lord of the rings', 'Batman begins']
-    let num = (req.params)
-    let number = listmn[num.indexNumber]
-    console.log(number)
-    res.send("problem 2")
-})
+// router.get('/movies/:indexNumber', function (req, res) {
+//     let listmn = ['Rang de basanti', 'The shining', 'Lord of the rings', 'Batman begins']
+//     let num = (req.params)
+//     let number = listmn[num.indexNumber]
+//     console.log(number)
+//     res.send("problem 2")
+// })
 
 router.get('/movies/:indexNumber', function (req, res) {
-    let listmn = ['Rang de basanti', 'The shining', 'Lord of the rings', 'Batman begins']
-    let length1 = (listmn.length);
-    let num = (req.params);
-    let number = listmn[num.indexNumber]
-    if ((length1 - 1) >= num.indexNumber) {
-        console.log(number);
+    let movies = ["Rang de basanti", "The shining", "Lord of the rings", "Batman begins"]
+    let lengthOfMovies = movies.length
+    let num = ((req.params))
+    let Number = movies[num.indexNumber]
+
+    if ((lengthOfMovies - 1) >= num.indexNumber) {
+        console.log(Number);
     }
     else {
-        console.log("use a valid index");
+        console.log("iuse a valid index");
     }
-    res.send("problem 3")
+    res.send('ohhhh')
 })
 
 
@@ -115,7 +116,41 @@ router.get('/filmss/:filmid', function (req, res) {
 })
 
 
-
+let players =
+    [
+        {
+            "name": "Dhiraj",
+            "dob": "29/08/2000",
+            "gender": "male",
+            "city": "Akola",
+            "sports": [
+                "dais"
+            ]
+        },
+        {
+            "name": "lokesh",
+            "dob": "1/1/1990",
+            "gender": "male",
+            "city": "mumbai",
+            "sports": [
+                "soccer"
+            ]
+        },
+    ]
+router.post('/players', function (req, res) {
+    let newaar = req.body.newplay
+    let nm = req.body.newplay.name
+    for (let i = 0; i <= players.length; i++) {
+        if (players.name !== nm) {
+            players.push(newaar)
+            
+        }
+        else {
+            console.log("This Name in Already Exists");
+        }
+    }
+    res.send({ data: players, status: true })
+})
 
 module.exports = router;
 // adding this comment for no reason
