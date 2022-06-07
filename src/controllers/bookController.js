@@ -5,6 +5,7 @@ const createBook = async function (req, res) {
     let data = req.body
 
     let savedData = await BookModel.create(data)
+ 
     res.send({ msg: savedData })
 }
 
@@ -26,7 +27,7 @@ const getParticularBooks = async function (req, res) {
 }
 
 const getXINRBooks = async function (req, res) {
-    let priceBook = await bookModel.find({ 'prices.indianPrice': '500INR' })
+    let priceBook = await bookModel.find({ $or: [{'prices.indianPrice': '500INR'}, {'prices.indianPrice': '200INR'},{'prices.indianPrice': '100INR'}]})
     res.send({ msg: priceBook })
 
 }
