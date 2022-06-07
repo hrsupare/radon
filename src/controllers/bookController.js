@@ -5,29 +5,28 @@ const createBook = async function (req, res) {
     let data = req.body
 
     let savedData = await BookModel.create(data)
- 
     res.send({ msg: savedData })
 }
 
 const bookList = async function (req, res) {
-    let allBooks = await BookModel.find()
+    let allBooks = await BookModel.find().select({ bookName: 1, authorName: 1, _id: 0 })
     res.send({ msg: allBooks })
 }
 
 const getBooksInYear = async function (req, res) {
-   let getyYear = await bookModel.find({ "year": 2010 })
+    let yr = req.body.year
+    let getyYear = await bookModel.find({ year: yr })
     res.send({ msg: getyYear })
 }
 
 const getParticularBooks = async function (req, res) {
-     let fetch = await bookModel.find({ $or :[
-        {bookName : "The Hunger Games"}, {year :2010 }
-    ] })
+    let byd = req.body
+    let fetch = await bookModel.find(byd)
     res.send({ msg: fetch })
 }
 
 const getXINRBooks = async function (req, res) {
-    let priceBook = await bookModel.find({ $or: [{'prices.indianPrice': '500INR'}, {'prices.indianPrice': '200INR'},{'prices.indianPrice': '100INR'}]})
+    let priceBook = await bookModel.find({ $or: [{ 'prices.indianPrice': '500INR' }, { 'prices.indianPrice': '200INR' }, { 'prices.indianPrice': '100INR' }] })
     res.send({ msg: priceBook })
 
 }
