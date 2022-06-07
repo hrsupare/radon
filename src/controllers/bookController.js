@@ -21,7 +21,7 @@ const getBooksInYear = async function (req, res) {
 
 const getParticularBooks = async function (req, res) {
      let fetch = await bookModel.find({ $or :[
-        {bookName : "The Hunger Games"}
+        {bookName : "The Hunger Games"}, {year :2010 }
     ] })
     res.send({ msg: fetch })
 }
