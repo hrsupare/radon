@@ -12,6 +12,11 @@ router.get("/test-me", function (req, res) {
 
 // router.get("/getUsersData", UserController.getUsersData)
 
+
+
+
+// BookController.js
+
 router.post("/createBook", BookController.createBook )
 
 router.get("/bookList", BookController.bookList)
@@ -23,5 +28,9 @@ router.post("/getParticularBooks", BookController.getParticularBooks)
 router.get("/getXINRBooks", BookController.getXINRBooks)
 
 router.get("/getRandomBooks", BookController.getRandomBooks)
+
+
+
+ 
 
 module.exports = router;
