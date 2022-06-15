@@ -18,6 +18,10 @@ const userSchema = new mongoose.Schema({
         type: Boolean
     },
     age: Number,
+    posts: {
+        type: [],
+        default: []
+    }
 }, { timestamps: true });
 
 module.exports = mongoose.model('UserAuth', userSchema)
