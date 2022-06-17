@@ -14,11 +14,11 @@ router.post("/login", userController.loginUser)
 //The userId is sent by front end
 router.get("/users/:userId", authentication1.authentication, authentication1.authorise, userController.getUserData)
 
-router.put("/users/:userId", authentication1.authentication, userController.updateUser)
+router.put("/users/:userId", authentication1.authentication, authentication1.authorise, userController.updateUser)
 
 router.post("/users/:userId/posts", authentication1.authentication, authentication1.authorise, userController.postMessage)
 
-router.delete("/users/:userId", authentication1.authentication, userController.deleteUser)
+router.delete("/users/:userId", authentication1.authentication,authentication1.authorise, userController.deleteUser)
 
 
 
