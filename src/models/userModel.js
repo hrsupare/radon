@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
         enum: ["male", "female", "others"]
     },
     isFreeAppUser: {
-        type: String,
+        type: Boolean,
         default: false
 
     }

@@ -1,11 +1,20 @@
 
 const isFreeAppUsers = function (req, res, next) {
-    const data = req.headers.isfreeappuser
-    // console.log(data)
-    if (data === undefined) {
-        res.send({ msg: "isFreeAppUser is not defined " })
+    const headears = req.headers
+    let appType = headears["isFreeAppUser"]
+
+    if (!appType) {
+        appType = headears["isfreeappuser"]
     }
-    else if(next());
+    if (!appType) {
+        return res.send({ status: "false", massage: "headers is Missing" })
+    }
+    if (appType == 'true') {
+        req.appTypeFree = true
+    } else {
+        req.appTypeFree = false
+    }
+    (next());
 }
 
-module.exports.isFreeAppUsers=isFreeAppUsers 
+module.exports.isFreeAppUsers = isFreeAppUsers 
